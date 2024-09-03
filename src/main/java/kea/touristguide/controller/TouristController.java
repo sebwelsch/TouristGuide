@@ -28,8 +28,8 @@ public class TouristController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<ArrayList<TouristAttraction>> addTouristAttraction(@RequestParam String name, @RequestParam String description) {
+    public ResponseEntity<String> addTouristAttraction(@RequestParam String name, @RequestParam String description) {
         touristService.addTouristAttraction(name, description);
-        return ResponseEntity.ok(touristService.getAllTouristAttractions());
+        return ResponseEntity.ok("Tourist Attraction Added");
     }
 }
