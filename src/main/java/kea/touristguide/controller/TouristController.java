@@ -4,9 +4,7 @@ import kea.touristguide.model.TouristAttraction;
 import kea.touristguide.service.TouristService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -27,5 +25,11 @@ public class TouristController {
     @GetMapping("/{name}")
     public ResponseEntity<TouristAttraction> getTouristAttraction(@PathVariable String name) {
         return ResponseEntity.ok(touristService.getTouristAttraction(name));
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<ArrayList<TouristAttraction>> addTouristAttraction(@RequestParam String name, @RequestParam String description) {
+        touristService.addTouristAttraction(name, description);
+        return ResponseEntity.ok(touristService.getAllTouristAttractions());
     }
 }

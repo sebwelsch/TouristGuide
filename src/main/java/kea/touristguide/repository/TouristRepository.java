@@ -12,6 +12,7 @@ public class TouristRepository {
     public TouristRepository() {
         touristAttractions.add(new TouristAttraction("Copenhagen", "Denmarks capital"));
         touristAttractions.add(new TouristAttraction("Oslo", "Norways capital"));
+        touristAttractions.add(new TouristAttraction("Stockholm", "Swedens capital"));
     }
 
     public ArrayList<TouristAttraction> getAllTouristAttractions() {
@@ -20,10 +21,14 @@ public class TouristRepository {
 
     public TouristAttraction getTouristAttraction(String name) {
         for (TouristAttraction touristAttraction : touristAttractions) {
-            if (touristAttraction.getName().equals(name)) {
+            if (touristAttraction.getName().equalsIgnoreCase(name)) {
                 return touristAttraction;
             }
         }
         return null;
+    }
+
+    public void addTouristAttraction(String name, String description) {
+        touristAttractions.add(new TouristAttraction(name, description));
     }
 }
