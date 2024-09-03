@@ -28,7 +28,27 @@ public class TouristRepository {
         return null;
     }
 
-    public void addTouristAttraction(TouristAttraction touristAttraction) {
-        touristAttractions.add(touristAttraction);
+    public void addTouristAttraction(TouristAttraction newTouristAttraction) {
+        touristAttractions.add(newTouristAttraction);
+    }
+
+    public void updateTouristAttraction(String name, TouristAttraction updatedTouristAttraction) {
+        for (TouristAttraction touristAttraction : touristAttractions) {
+            if (touristAttraction.getName().equalsIgnoreCase(name)) {
+                touristAttraction.setName(updatedTouristAttraction.getName());
+                touristAttraction.setDescription(updatedTouristAttraction.getDescription());
+            }
+        }
+    }
+
+
+    public TouristAttraction deleteTouristAttraction(String name) {
+        for (TouristAttraction touristAttraction : touristAttractions) {
+            if (touristAttraction.getName().equalsIgnoreCase(name)) {
+                touristAttractions.remove(touristAttraction);
+                return touristAttraction;
+            }
+        }
+        return null;
     }
 }

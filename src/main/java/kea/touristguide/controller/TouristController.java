@@ -28,14 +28,18 @@ public class TouristController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<TouristAttraction> addTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
-        TouristAttraction newTouristAttraction = touristService.addTouristAttraction(touristAttraction);
-        return ResponseEntity.ok(newTouristAttraction);
+    public ResponseEntity<TouristAttraction> addTouristAttraction(@RequestBody TouristAttraction newTouristAttraction) {
+        TouristAttraction newlyAddedTouristAttraction = touristService.addTouristAttraction(newTouristAttraction);
+        return ResponseEntity.ok(newlyAddedTouristAttraction);
     }
 
-    @PostMapping("/update")
-    public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
-        
-        return ResponseEntity.ok();
+    @PutMapping("/update/{name}")
+    public ResponseEntity<TouristAttraction> updateTouristAttraction(@PathVariable String name, @RequestBody TouristAttraction updatedTouristAttraction) {
+        return ResponseEntity.ok(touristService.updateTouristAttraction(name, updatedTouristAttraction));
+    }
+
+    @DeleteMapping("/delete/{name}")
+    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@PathVariable String name) {
+        return ResponseEntity.ok(touristService.deleteTouristAttraction(name));
     }
 }
