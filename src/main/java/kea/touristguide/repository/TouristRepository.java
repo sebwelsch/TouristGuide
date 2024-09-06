@@ -42,7 +42,6 @@ public class TouristRepository {
         }
     }
 
-//Ændret lidt i delete. Jeg stød på en error ConcurrentModificationException. Dette burde have samme funktion.
     public TouristAttraction deleteTouristAttraction(String name) {
         Iterator<TouristAttraction> iterator = touristAttractions.iterator();
         while (iterator.hasNext()) {
@@ -55,14 +54,3 @@ public class TouristRepository {
         return null;
     }
 }
-
-//Just in case efterlader jeg den gamle delete i denne kommentar
-//public TouristAttraction deleteTouristAttraction(String name) {
-//    for (TouristAttraction touristAttraction : touristAttractions) {
-//        if (touristAttraction.getName().equalsIgnoreCase(name)) {
-//            touristAttractions.remove(touristAttraction);
-//            return touristAttraction;
-//        }
-//    }
-//    return null;
-//}
