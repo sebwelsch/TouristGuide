@@ -1,0 +1,26 @@
+h1{
+    display: inline-block;
+    color: blue;
+}
+
+#header{
+     margin: auto;
+}
+
+img{
+    display: inline-block;
+    width: 100px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    background-color: grey;
+    width: 100%;
+    left: 0;
+
+}
+
+footer p{
+    padding-left: 20px;
+}
