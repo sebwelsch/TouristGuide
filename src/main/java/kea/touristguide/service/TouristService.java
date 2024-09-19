@@ -5,6 +5,8 @@ import kea.touristguide.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
 
 @Service
 public class TouristService {
@@ -22,14 +24,20 @@ public class TouristService {
         return touristRepository.getTouristAttraction(name);
     }
 
-    public TouristAttraction addTouristAttraction(TouristAttraction newTouristAttraction) {
-        touristRepository.addTouristAttraction(newTouristAttraction);
-        return newTouristAttraction;
+    public TreeSet<String> getCities() {
+        return touristRepository.getCities();
     }
 
-    public TouristAttraction updateTouristAttraction(String name, TouristAttraction updatedTouristAttraction) {
+    public List<String> getTags() {
+        return touristRepository.getTags();
+    }
+
+    public void saveTouristAttraction(TouristAttraction newTouristAttraction) {
+        touristRepository.saveTouristAttraction(newTouristAttraction);
+    }
+
+    public void updateTouristAttraction(String name, TouristAttraction updatedTouristAttraction) {
         touristRepository.updateTouristAttraction(name, updatedTouristAttraction);
-        return updatedTouristAttraction;
     }
 
     public TouristAttraction deleteTouristAttraction(String name) {

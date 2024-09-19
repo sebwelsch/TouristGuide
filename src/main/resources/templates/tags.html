@@ -9,12 +9,12 @@
 <body>
 
 <div class="container-sm">
-    <h1>Turistattraktioner</h1>
+    <h1 th:text="${touristAttractions.name + ' tags'}"/>
 
     <table class="table">
         <tbody>
-        <tr th:each="attraction: ${touristAttractions}">
-            <td th:text="${attraction.tags}"/>
+        <tr th:each="tag: ${touristAttractions.tags}">
+            <td th:text="${tag}"/>
         </tr>
         </tbody>
     </table>

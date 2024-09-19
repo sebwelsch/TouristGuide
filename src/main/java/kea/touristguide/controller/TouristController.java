@@ -31,22 +31,38 @@ public class TouristController {
 
     @GetMapping("/{name}/tags")
     public String getTouristAttractionTags(@PathVariable String name, Model model) {
-        model.addAttribute("touristAttractions", touristService.getTouristAttraction(name).getTags());
+        model.addAttribute("touristAttractions", touristService.getTouristAttraction(name));
         return "tags";
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<TouristAttraction> addTouristAttraction(@RequestBody TouristAttraction newTouristAttraction) {
-        TouristAttraction newlyAddedTouristAttraction = touristService.addTouristAttraction(newTouristAttraction);
-        return ResponseEntity.ok(newlyAddedTouristAttraction);
+    @GetMapping("/add")
+    public String addTouristAttraction(Model model) {
+        model.addAttribute("cities", touristService.getCities());
+        model.addAttribute("tags", touristService.getTags());
+        return "addTouristAttraction";
     }
 
-    @PutMapping("/update/{name}")
-    public ResponseEntity<TouristAttraction> updateTouristAttraction(@PathVariable String name, @RequestBody TouristAttraction updatedTouristAttraction) {
-        return ResponseEntity.ok(touristService.updateTouristAttraction(name, updatedTouristAttraction));
+    @PostMapping("/save")
+    public String saveTouristAttraction(@ModelAttribute TouristAttraction newTouristAttraction) {
+        touristService.saveTouristAttraction(newTouristAttraction);
+        return "redirect:/attractions";
     }
 
-    @DeleteMapping("/delete/{name}")
+    @GetMapping("/{name}/edit")
+    public String editTouristAttraction(Model model, @PathVariable String name) {
+        model.addAttribute("touristAttraction", touristService.getTouristAttraction(name));
+        model.addAttribute("cities", touristService.getCities());
+        model.addAttribute("tags", touristService.getTags());
+        return "editTouristAttraction";
+    }
+
+    @PostMapping("/update")
+    public String updateTouristAttraction(@ModelAttribute TouristAttraction updateTouristAttraction) {
+        touristService.updateTouristAttraction(updateTouristAttraction.getName(), updateTouristAttraction);
+        return "redirect:/attractions";
+    }
+
+    @PostMapping("/delete/{name}")
     public ResponseEntity<TouristAttraction> deleteTouristAttraction(@PathVariable String name) {
         return ResponseEntity.ok(touristService.deleteTouristAttraction(name));
     }

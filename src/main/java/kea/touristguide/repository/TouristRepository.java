@@ -4,8 +4,11 @@ import kea.touristguide.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Repository
 public class TouristRepository {
@@ -31,7 +34,23 @@ public class TouristRepository {
         return null;
     }
 
-    public void addTouristAttraction(TouristAttraction newTouristAttraction) {
+    public TreeSet<String> getCities() {
+        TreeSet<String> cities = new TreeSet<>();
+        for (TouristAttraction touristAttraction : touristAttractions) {
+            cities.add(touristAttraction.getCity());
+        }
+        return cities;
+    }
+
+    public List<String> getTags() {
+        Set<String> uniqueTags = new HashSet<>();
+        for (TouristAttraction touristAttraction : touristAttractions) {
+            uniqueTags.addAll(touristAttraction.getTags());
+        }
+        return new ArrayList<>(uniqueTags);
+    }
+
+    public void saveTouristAttraction(TouristAttraction newTouristAttraction) {
         touristAttractions.add(newTouristAttraction);
     }
 
@@ -40,6 +59,8 @@ public class TouristRepository {
             if (touristAttraction.getName().equalsIgnoreCase(name)) {
                 touristAttraction.setName(updatedTouristAttraction.getName());
                 touristAttraction.setDescription(updatedTouristAttraction.getDescription());
+                touristAttraction.setCity(updatedTouristAttraction.getCity());
+                touristAttraction.setTags(updatedTouristAttraction.getTags());
             }
         }
     }
