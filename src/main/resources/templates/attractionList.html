@@ -26,7 +26,11 @@
             <td th:text="${attraction.city}"/>
             <td><a class="btn btn-outline-info" role="button" th:href="@{/attractions/{name}/tags(name=${attraction.name})}">Tags</a></td>
             <td><a class="btn btn-outline-info" role="button" th:href="@{/attractions/{name}/edit(name=${attraction.name})}">Rediger</a></td>
-            <td><a class="btn btn-outline-danger" role="button" th:href="@{/attractions/{name}/delete(name=${attraction.name})}">Slet</a></td>
+            <td>
+                <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" method="post">
+                    <button type="submit" class="btn btn-outline-danger">Slet</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
