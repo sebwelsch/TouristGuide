@@ -15,7 +15,7 @@
         <div class="row mb-3">
             <label for="name" class="col-sm-2 col-form-label">Navn</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" id="name" th:value="${touristAttraction.name}">
+                <input type="text" class="form-control" name="name" id="name" th:value="${touristAttraction.name}" readonly>
             </div>
         </div>
         <div class="row mb-3">
@@ -36,7 +36,7 @@
             <label for="tags" class="col-sm-2 col-form-label">Tags</label>
             <div class="col-sm-10">
                 <div class="form-check" th:each="tag: ${tags}">
-                    <input class="form-check-input" type="checkbox" th:value="${tag}" name="tags" id="tags">
+                    <input class="form-check-input" type="checkbox" th:value="${tag}" th:field="${touristAttraction.tags}" name="tags" id="tags">
                     <label th:text="${tag}" class="form-check-label" for="tags"/>
                 </div>
             </div>
