@@ -5,15 +5,17 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @Repository
 public class TouristRepository {
     private ArrayList<TouristAttraction> touristAttractions = new ArrayList<>();
 
     public TouristRepository() {
-        touristAttractions.add(new TouristAttraction("Copenhagen", "Denmarks capital"));
-        touristAttractions.add(new TouristAttraction("Oslo", "Norways capital"));
-        touristAttractions.add(new TouristAttraction("Stockholm", "Swedens capital"));
+        touristAttractions.add(new TouristAttraction("SMK", "Museum for Kunst", "København", List.of("Kunst", "Museum")));
+        touristAttractions.add(new TouristAttraction("Odense Zoo", "Europas bedste zoo", "Odense", List.of("Børnevenlig")));
+        touristAttractions.add(new TouristAttraction("Dyrehaven", "Naturpark med skovområder", "Kongens Lyngby", List.of("Natur", "Gratis")));
+        touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark i Københavns centrum", "København", List.of("Børnevenlig")));
     }
 
     public ArrayList<TouristAttraction> getAllTouristAttractions() {
