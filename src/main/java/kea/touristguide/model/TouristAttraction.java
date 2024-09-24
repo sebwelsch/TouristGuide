@@ -3,7 +3,7 @@ package kea.touristguide.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TouritAttraction {
+public class TouristAttraction {
     private String name;
     private String description;
     private String city;
