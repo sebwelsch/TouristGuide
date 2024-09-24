@@ -2,6 +2,7 @@ package kea.touristguide.controller;
 
 import kea.touristguide.model.TouristAttraction;
 import kea.touristguide.service.TouristService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class TouristController {
     private final TouristService touristService;
 
+    @Autowired
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
