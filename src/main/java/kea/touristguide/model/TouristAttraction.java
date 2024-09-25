@@ -1,6 +1,5 @@
 package kea.touristguide.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TouristAttraction {
