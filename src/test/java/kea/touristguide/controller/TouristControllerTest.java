@@ -1,15 +1,15 @@
 package kea.touristguide.controller;
 
+import kea.touristguide.service.TouristService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @WebMvcTest(TouristController.class)
 class TouristControllerTest {
@@ -17,9 +17,11 @@ class TouristControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private TouristService touristService;
+
     @BeforeEach
     void setUp() {
-
     }
 
     @Test
