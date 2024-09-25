@@ -7,7 +7,7 @@ public class TouristAttraction {
     private String name;
     private String description;
     private String city;
-    private List<String> tags = new ArrayList<>();
+    private List<String> tags;
 
     public TouristAttraction(String name, String description, String city, List<String> tags) {
         this.name = name;
