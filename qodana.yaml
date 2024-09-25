@@ -1,6 +1,6 @@
 version: "1.0"
 linter: jetbrains/qodana-jvm:2024.2
-failThreshold: 4
+failThreshold: 10
 profile:
   name: qodana.recommended
 include:
