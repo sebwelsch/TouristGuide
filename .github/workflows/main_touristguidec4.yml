@@ -26,7 +26,7 @@ jobs:
         run: mvn clean install
 
       - name: Publish Test Report
-        if: succes() || failure()
+        if: success() || failure()
         uses: scacap/action-surefire-report@v1
 
       - name: Upload artifact for deployment job
