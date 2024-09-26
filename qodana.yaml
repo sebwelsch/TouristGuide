@@ -5,3 +5,7 @@ profile:
   name: qodana.recommended
 include:
   - name: CheckDependencyLicenses
+exclude:
+  - name: SpringMVCViewInspection
+    paths:
+      - src/main/java/kea/touristguide/controller/TouristController.java
