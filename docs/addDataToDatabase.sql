@@ -82,4 +82,4 @@ INSERT INTO cities (name) VALUES
 ('Vejle'),
 ('Viborg'),
 ('Vojens'),
-('Åbyhøj'),
+('Åbyhøj')
