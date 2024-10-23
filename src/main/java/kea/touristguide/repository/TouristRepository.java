@@ -1,5 +1,6 @@
 package kea.touristguide.repository;
 
+import kea.touristguide.model.Tag;
 import kea.touristguide.model.TouristAttraction;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -82,23 +83,14 @@ public class TouristRepository {
         return cities;
     }
 
-
     public List<String> getTags() {
-        Set<String> uniqueTags = new HashSet<>();
-        String query = "SELECT tags FROM attractions";
-
-        try (Connection dbConnection = getDBConnection()) {
-            Statement stmt = dbConnection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            while (rs.next()) {
-                uniqueTags.addAll(List.of(rs.getString("tags").split(",")));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Error fetching tags", e);
+        List<String> tagNames = new ArrayList<>();
+        for (Tag tag : Tag.values()) {
+            tagNames.add(tag.getDisplayName());
         }
-        return new ArrayList<>(uniqueTags);
+        return tagNames;
     }
+
 
     public void saveTouristAttraction(TouristAttraction newTouristAttraction) {
         String query = "INSERT INTO attractions (name, description, city, tags) VALUES (?, ?, ?, ?)";
