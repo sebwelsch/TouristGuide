@@ -18,9 +18,4 @@ public enum Tag {
     public String getDisplayName() {
         return displayName;
     }
-
-    @Override
-    public String toString() {
-        return displayName;
-    }
 }
