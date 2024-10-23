@@ -3,7 +3,6 @@ package kea.touristguide.controller;
 import kea.touristguide.model.TouristAttraction;
 import kea.touristguide.service.TouristService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +21,6 @@ public class TouristController {
     public String getAllTouristAttractions(Model model) {
         model.addAttribute("touristAttractions", touristService.getAllTouristAttractions());
         return "attractionList";
-    }
-
-    @GetMapping("/{name}")
-    public ResponseEntity<TouristAttraction> getTouristAttraction(@PathVariable String name) {
-        return ResponseEntity.ok(touristService.getTouristAttraction(name));
     }
 
     @GetMapping("/{name}/tags")
