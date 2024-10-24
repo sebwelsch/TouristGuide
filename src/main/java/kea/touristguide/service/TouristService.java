@@ -40,7 +40,7 @@ public class TouristService {
         touristRepository.updateTouristAttraction(name, updatedTouristAttraction);
     }
 
-    public TouristAttraction deleteTouristAttraction(String name) {
-        return touristRepository.deleteTouristAttraction(name);
+    public void deleteTouristAttraction(String name) {
+        touristRepository.deleteTouristAttraction(name);
     }
 }
