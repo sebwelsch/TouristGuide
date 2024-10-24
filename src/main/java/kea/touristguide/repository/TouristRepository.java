@@ -91,7 +91,6 @@ public class TouristRepository {
         return tagNames;
     }
 
-
     public void saveTouristAttraction(TouristAttraction newTouristAttraction) {
         String query = "INSERT INTO attractions (name, description, city, tags) VALUES (?, ?, ?, ?)";
         try (Connection dbConnection = getDBConnection()) {
@@ -125,19 +124,14 @@ public class TouristRepository {
         }
     }
 
-    public TouristAttraction deleteTouristAttraction(String name) {
+    public void deleteTouristAttraction(String name) {
         String query = "DELETE FROM attractions WHERE name = ?";
         try (Connection dbConnection = getDBConnection()) {
             PreparedStatement pstmt = dbConnection.prepareStatement(query);
 
             pstmt.setString(1, name);
-            int affectedRows = pstmt.executeUpdate();
-            if (affectedRows > 0) {
-                return new TouristAttraction(name, null, null, null);
-            }
         } catch (SQLException e) {
             throw new RuntimeException("Error deleting the tourist attraction", e);
         }
-        return null;
     }
 }
